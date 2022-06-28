@@ -1,4 +1,9 @@
 <?php
+/**
+ * Class Menu
+ *
+ * @since 1.0
+ */
 function jotform_admin_menu() {
   add_menu_page(
 		'Jotform', 
@@ -11,10 +16,11 @@ function jotform_admin_menu() {
 
   add_submenu_page(
 		'jotform-admin-menu', 
-		'Inbox', 'Inbox', 
+		'Inbox', 
+		'Inbox', 
 		'manage_options', 
-		'jotform-admin-menu-inbox', '
-		jotform_admin_menu_inbox');
+		'jotform-admin-menu-inbox', 
+		'jotform_admin_menu_inbox');
 
   add_submenu_page(
 		'jotform-admin-menu', 
@@ -26,10 +32,11 @@ function jotform_admin_menu() {
 }
 
 function jotform_admin_menu_main() {
-  echo '<div class="wrap">
-					<iframe src="http://jotform.com/myforms" frameborder="0" scrolling="yes" seamless="seamless" style="display:block; width:100%; height:100vh;">
-					</iframe>
-    		</div>';
+  echo 
+	'<div class="wrap">
+		<iframe src="http://jotform.com/myforms" frameborder="0" scrolling="yes" seamless="seamless" style="display:block; width:100%; height:100vh;">
+		</iframe>
+  </div>';
 }
 function jotform_admin_menu_inbox() {
   echo '<div class="wrap">Inbox Section</div>';
@@ -45,10 +52,9 @@ function jotform_admin_menu_accountSettings() {
 	 */
 	function get_menu_icon() {
 		ob_start();
-    require_once JOTFORM_DRAGDROP_FORM_PLUGIN_DIR . 'assets/jotform.svg';
+    require_once JOTFORM_DRAGDROP_FORM_PLUGIN_DIR . 'includes/assets/jotform.svg';
 		$svg = ob_get_clean();
 		return 'data:image/svg+xml;base64,' . base64_encode( $svg );
 	}
-
 add_action('admin_menu', 'jotform_admin_menu');
 ?>
