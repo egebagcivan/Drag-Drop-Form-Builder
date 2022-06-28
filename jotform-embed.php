@@ -14,7 +14,6 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-//tanımlayıcı isimler koyulacak
 if ( ! defined( 'JOTFORM_DRAGDROP_FORM_VERSION' ) ) {
 	/**
 	 * Plugin version.
