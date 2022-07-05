@@ -12,7 +12,7 @@ function jotform_admin_menu() {
 		'jotform-admin-menu', 
 		'jotform_admin_menu_main', 
 		get_menu_icon(), 
-		70);
+		50);
 
   add_submenu_page(
 		'jotform-admin-menu', 
@@ -33,17 +33,20 @@ function jotform_admin_menu() {
 
 function jotform_admin_menu_main() {
   echo 
-	'<div class="wrap">
-		<iframe src="http://jotform.com/myforms" frameborder="0" scrolling="yes" seamless="seamless" style="display:block; width:100%; height:100vh;">
-		</iframe>
-  </div>';
+	'<iframe src="https://www.jotform.com/platform/?product=myforms&client=wordpress" frameborder="0" scrolling="yes" seamless="seamless" style="margin-left: 0px; padding-left: 0px; display:block; width:100%; height:100vh;">
+		</iframe>';
 }
 function jotform_admin_menu_inbox() {
-  echo '<div class="wrap">Inbox Section</div>';
+  echo 
+	'<iframe src="https://www.jotform.com/platform/?product=inbox&client=wordpress" frameborder="0" scrolling="yes" seamless="seamless" style="margin-left: 0px; padding-left: 0px; display:block; width:100%; height:100vh;">
+		</iframe>';
 }
 function jotform_admin_menu_accountSettings() {
-  echo '<div class="wrap">Account Settings Section</div>';
+  echo 
+	'<iframe src="https://jotform.com/platform/?product=myaccount&client=wordpress" frameborder="0" scrolling="yes" seamless="seamless" style="margin-left: 0px; padding-left: 0px; display:block; width:100%; height:100vh;">
+		</iframe>';
 }
+
 
 	/**
 	 * Jotform icon svg image.
@@ -57,4 +60,13 @@ function jotform_admin_menu_accountSettings() {
 		return 'data:image/svg+xml;base64,' . base64_encode( $svg );
 	}
 add_action('admin_menu', 'jotform_admin_menu');
+add_action('admin_head', 'admin_styles');
+
+function admin_styles() {
+    echo '<style>
+        #wpcontent {
+            padding-left: 0px;
+        }
+    </style>';
+}
 ?>
