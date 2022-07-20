@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "create-block/jotform-form-builder",
+  "version": "0.1.0",
+  "title": "Jotform Form Builder",
+  "category": "widgets",
+  "icon": "smiley",
+  "description": "Example static block scaffolded with Create Block tool.",
+  "attributes": {
+    "message": {
+      "type": "number",
+      "default": "Hello Mehmet"
+    },
+    "editable": {
+      "type": "boolean",
+      "default": true
+    },
+    "style": {
+      "type": "object",
+      "default": {
+        "fontWeight": "lighter"
+      }
+    },
+    "modalStyles": {
+      "type": "object",
+      "default": {
+        "backgroundColor": "yellow"
+      }
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "textdomain": "jotform-form-builder",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

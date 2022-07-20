@@ -36,6 +36,10 @@ if ( ! defined( 'JOTFORM_DRAGDROP_FORM_PLUGIN_URL' ) ) {
 if ( ! defined( 'JOTFORM_DRAGDROP_FORM_PLUGIN_FILE' ) ) {
 	define( 'JOTFORM_DRAGDROP_FORM_PLUGIN_FILE', __FILE__ );
 }
+function create_block_jotform_form_builder_block_init() {
+	register_block_type( __DIR__ . '/build' );
+}
+add_action( 'init', 'create_block_jotform_form_builder_block_init' );
 
 //yapı akismet e yakın olmalı
   // Admin/Dashboard only includes, also in ajax.
