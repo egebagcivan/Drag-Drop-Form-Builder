@@ -32,9 +32,29 @@ function jotform_admin_menu() {
 }
 
 function jotform_admin_menu_main() {
-  echo 
-	'<iframe src="https://www.jotform.com/platform/?product=myforms&client=wordpress" frameborder="0" scrolling="yes" seamless="seamless" style="margin-left: 0px; padding-left: 0px; display:block; width:100%; height:100vh;">
-		</iframe>';
+	//get the response code from the server and assign it to a variable called $ret
+	try {
+		$URL = 'https://www.jotform.com/platform/?product=myforms&client=wordpress';
+		$ch = curl_init($URL);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_exec($ch);
+		$ret = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+		curl_close($ch);
+	} catch(Exception $e) {
+		echo $e->getMessage();
+	}
+
+	?>
+	<?php
+	if($ret == 404) {
+		echo '<iframe src="https://www.jotform.com/platform/oauth.php" frameborder="0" scrolling="yes" seamless="seamless" style="margin-left: 0px; padding-left: 0px; display:block; width:100%; height:100vh;">
+			</iframe>';
+	} else {
+		echo '<iframe src="https://www.jotform.com/platform/?product=myforms&client=wordpress" frameborder="0" scrolling="yes" seamless="seamless" style="margin-left: 0px; padding-left: 0px; display:block; width:100%; height:100vh;">
+			</iframe>';
+		
+	}
+	
 }
 function jotform_admin_menu_inbox() {
   echo 
@@ -62,11 +82,43 @@ function jotform_admin_menu_accountSettings() {
 add_action('admin_menu', 'jotform_admin_menu');
 add_action('admin_head', 'admin_styles');
 
+/**
+ * Admin styles.
+ * Remove the padding left on the admin menu.
+ * @since 1.0
+ */
 function admin_styles() {
     echo '<style>
         #wpcontent {
             padding-left: 0px;
         }
+				h1 {
+				
+					position: absolute;
+
+					text-align: center;
+					font-family: "Circular Std";
+					font-style: normal;
+					font-weight: 700;
+					font-size: 46px;
+					line-height: 58px;
+					font-feature-settings: "liga" off;
+				
+					color: #0a1551;
+				}
+				h2 {
+					
+					text-align: center;
+					font-family: "Circular Std";
+					font-style: normal;
+					font-weight: 450;
+					font-size: 20px;
+					line-height: 130%;
+				
+					color: #6f76a7;
+
+				}
+				
     </style>';
 }
 ?>

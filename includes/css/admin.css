@@ -1,0 +1,34 @@
+h1 {
+  /* Create Custom WordPress Forms */
+
+  position: absolute;
+  width: 710px;
+  height: 58px;
+  left: 268px;
+  top: 60px;
+
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 46px;
+  line-height: 58px;
+  font-feature-settings: "liga" off;
+
+  color: #0a1551;
+}
+
+h2 {
+  width: 768px;
+  height: 78px;
+
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 20px;
+  line-height: 130%;
+
+  color: #6f76a7;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
