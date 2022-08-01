@@ -44,11 +44,13 @@ function jotform_admin_menu_main() {
 		echo $e->getMessage();
 	}
 
-	?>
-	<?php
 	if($ret == 404) {
-		echo '<iframe src="https://www.jotform.com/platform/oauth.php" frameborder="0" scrolling="yes" seamless="seamless" style="margin-left: 0px; padding-left: 0px; display:block; width:100%; height:100vh;">
-			</iframe>';
+		echo '<div id="jf-container"><div class="row"><h1 class="one">Create Custom Wordpress Forms</h1></div>
+		<div class="row"><p class="two">Collect the data you need to power your business — without changing your entire website. Build custom online forms with Jotform and easily embed them in your WordPress-powered site.</p></div>
+		<div class="row-last"><div class="same"><button href="#" class="button1">Login to Jotform</button><div class="center"><p>Don&#39;t Have An Account? <a href="#">Sign Up</a></p></div></div>
+		<img src="'.plugins_url('../includes/assets/jf-icon.svg', __FILE__).'" alt="Jotform" class="jotform-logo" /></div></div>';
+		
+		
 	} else {
 		echo '<iframe src="https://www.jotform.com/platform/?product=myforms&client=wordpress" frameborder="0" scrolling="yes" seamless="seamless" style="margin-left: 0px; padding-left: 0px; display:block; width:100%; height:100vh;">
 			</iframe>';
@@ -79,6 +81,24 @@ function jotform_admin_menu_accountSettings() {
 		$svg = ob_get_clean();
 		return 'data:image/svg+xml;base64,' . base64_encode( $svg );
 	}
+
+	function get_jf_icon() {
+		ob_start();
+    require_once JOTFORM_DRAGDROP_FORM_PLUGIN_DIR . 'includes/assets/jf-icon.svg';
+		$svg = ob_get_clean();
+		return 'data:image/svg+xml;base64,' . base64_encode( $svg );
+	}
+
+
+	function add_plugin_stylesheet() 
+    {
+      wp_enqueue_style( 'style', JOTFORM_DRAGDROP_FORM_PLUGIN_URL . 'includes/css/style.css' );
+    }
+
+    add_action('admin_print_styles', 'add_plugin_stylesheet');
+
+	
+
 add_action('admin_menu', 'jotform_admin_menu');
 add_action('admin_head', 'admin_styles');
 
@@ -92,33 +112,6 @@ function admin_styles() {
         #wpcontent {
             padding-left: 0px;
         }
-				h1 {
-				
-					position: absolute;
-
-					text-align: center;
-					font-family: "Circular Std";
-					font-style: normal;
-					font-weight: 700;
-					font-size: 46px;
-					line-height: 58px;
-					font-feature-settings: "liga" off;
-				
-					color: #0a1551;
-				}
-				h2 {
-					
-					text-align: center;
-					font-family: "Circular Std";
-					font-style: normal;
-					font-weight: 450;
-					font-size: 20px;
-					line-height: 130%;
-				
-					color: #6f76a7;
-
-				}
-				
     </style>';
 }
 ?>

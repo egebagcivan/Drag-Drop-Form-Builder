@@ -1,0 +1,70 @@
+@import url("http://fonts.cdnfonts.com/css/circular-std");
+h1.one {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 46px;
+  font-feature-settings: "liga" off;
+
+  color: #0a1551;
+}
+p.two {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 20px;
+  /* or 26px */
+
+  /* Dark gray */
+
+  color: #6f76a7;
+
+  /* Inside auto layout */
+}
+a.button {
+  color: #fff !important;
+  margin: auto !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+.button1 {
+  background-color: #78bb07 !important;
+  width: 324px;
+  height: 56px;
+  border: none;
+  border-radius: 4px !important;
+  color: #fff !important;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  align-items: center;
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+} /* Green */
+#jf-container {
+  width: 100%;
+  max-width: 70%;
+  margin: 0 auto;
+  padding: 0;
+
+  padding: 20px;
+}
+.jotform-logo {
+  float: right;
+}
+.row-last {
+  display: flex;
+  justify-content: space-between;
+}
+.same {
+  margin-top: 80px;
+}
+.center {
+  text-align: center;
+}
