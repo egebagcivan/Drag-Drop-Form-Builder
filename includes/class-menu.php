@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL & ~E_NOTICE);
 /**
  * Class Menu
  *
@@ -14,31 +15,48 @@ function jotform_admin_menu() {
 		get_menu_icon(), 
 		50);
 
-  add_submenu_page(
-		'jotform-admin-menu', 
-		'Inbox', 
-		'Inbox', 
-		'manage_options', 
-		'jotform-admin-menu-inbox', 
-		'jotform_admin_menu_inbox');
-
-  add_submenu_page(
-		'jotform-admin-menu', 
-		'Account Settings', 
-		'Account Settings', 
-		'manage_options', 
-		'jotform-admin-menu-accountsettings', 
-		'jotform_admin_menu_accountSettings');
+		if(get_option('qwwwww_token') != null) {
+			add_submenu_page(
+				'jotform-admin-menu', 
+				'Inbox', 
+				'Inbox', 
+				'manage_options', 
+				'jotform-admin-menu-inbox', 
+				'jotform_admin_menu_inbox');
+		
+			add_submenu_page(
+				'jotform-admin-menu', 
+				'Account Settings', 
+				'Account Settings', 
+				'manage_options', 
+				'jotform-admin-menu-accountsettings', 
+				'jotform_admin_menu_accountSettings');
+		}
+  
 }
 
 function jotform_admin_menu_main() {
-	//get the response code from the server and assign it to a variable called $ret
-	echo $_GET['accessToken'];
+	if($_GET['accessToken'] != null) {
+		$accessToken = $_GET['accessToken'];
+		add_option('qwwwww_token', $accessToken);
+		$token = get_option('qwwwww_token');
+	} else if($token != $accessToken) {
+		$accessToken = $_GET['accessToken'];
+		update_option('qwwwww_token', $accessToken);
+	} 
+
+	if(get_option('qwwwww_token') != null) {
+		$url = urlencode('https://www.jotform.com/platform/?product=myforms&client=wordpress');
+		echo 
+	'<iframe src="https://api.jotform.com/login?apikey='.get_option('qwwwww_token').'&return='.$url.'" frameborder="0" scrolling="yes" seamless="seamless" style="margin-left: 0px; padding-left: 0px; display:block; width:100%; height:100vh;">
+		</iframe>';
+	}
+	else {
 		echo '<div id="jf-container"><div class="row"><h1 class="one">Create Custom Wordpress Forms</h1></div>
 		<div class="row"><p class="two">Collect the data you need to power your business — without changing your entire website. Build custom online forms with Jotform and easily embed them in your WordPress-powered site.</p></div>
 		<div class="row-last"><div class="same"><button id="btnLogin" class="button1">Login to Jotform</button><div class="center"><p>Don&#39;t Have An Account? <a href="#">Sign Up</a></p></div></div>
 		<img src="'.plugins_url('../includes/assets/jf-icon.svg', __FILE__).'" alt="Jotform" class="jotform-logo" /></div></div>';
-		
+	}
 	
 }
 function jotform_admin_menu_inbox() {

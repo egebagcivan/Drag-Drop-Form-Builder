@@ -6,7 +6,7 @@ async function test() {
     let url = `https://www.jotform.com//platform/oauth.php?registrationType=oauth&client_id=Wordpress&access_type=full&auth_type=login&popup=1&ref=${encodeURIComponent(
       window.location.origin
     )}`;
-    let other = window.open(url, "_blank", features);
+    var other = window.open(url, "_blank", features);
   });
 }
 test();
@@ -17,6 +17,8 @@ window.addEventListener(
     console.log(event.data);
     if (event.data.type == "allowAuth") {
       console.log(window.location);
+      other.close();
+      window.close();
       window.location =
         window.location + "&accessToken=" + event.data.data.accessToken;
     }
