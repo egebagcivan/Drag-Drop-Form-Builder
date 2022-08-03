@@ -77,9 +77,6 @@ button.button1:hover:after {
 
   padding: 20px;
 }
-.jotform-logo {
-  float: right;
-}
 .row-last {
   display: flex;
   justify-content: space-between;
@@ -89,4 +86,5 @@ button.button1:hover:after {
 }
 .center {
   text-align: center;
+  text-decoration: none;
 }

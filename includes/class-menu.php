@@ -33,29 +33,12 @@ function jotform_admin_menu() {
 
 function jotform_admin_menu_main() {
 	//get the response code from the server and assign it to a variable called $ret
-	try {
-		$URL = 'https://www.jotform.com/platform/?product=myforms&client=wordpress';
-		$ch = curl_init($URL);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_exec($ch);
-		$ret = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-		curl_close($ch);
-	} catch(Exception $e) {
-		echo $e->getMessage();
-	}
-
-	if($ret == 404) {
+	echo $_GET['accessToken'];
 		echo '<div id="jf-container"><div class="row"><h1 class="one">Create Custom Wordpress Forms</h1></div>
 		<div class="row"><p class="two">Collect the data you need to power your business — without changing your entire website. Build custom online forms with Jotform and easily embed them in your WordPress-powered site.</p></div>
-		<div class="row-last"><div class="same"><button href="#" class="button1">Login to Jotform</button><div class="center"><p>Don&#39;t Have An Account? <a href="#">Sign Up</a></p></div></div>
+		<div class="row-last"><div class="same"><button id="btnLogin" class="button1">Login to Jotform</button><div class="center"><p>Don&#39;t Have An Account? <a href="#">Sign Up</a></p></div></div>
 		<img src="'.plugins_url('../includes/assets/jf-icon.svg', __FILE__).'" alt="Jotform" class="jotform-logo" /></div></div>';
 		
-		
-	} else {
-		echo '<iframe src="https://www.jotform.com/platform/?product=myforms&client=wordpress" frameborder="0" scrolling="yes" seamless="seamless" style="margin-left: 0px; padding-left: 0px; display:block; width:100%; height:100vh;">
-			</iframe>';
-		
-	}
 	
 }
 function jotform_admin_menu_inbox() {
@@ -93,9 +76,13 @@ function jotform_admin_menu_accountSettings() {
 	function add_plugin_stylesheet() 
     {
       wp_enqueue_style( 'style', JOTFORM_DRAGDROP_FORM_PLUGIN_URL . 'includes/css/style.css' );
+      wp_enqueue_script( 'script', JOTFORM_DRAGDROP_FORM_PLUGIN_URL . 'includes/js/popup.js' );
     }
-
+	
     add_action('admin_print_styles', 'add_plugin_stylesheet');
+
+
+	
 
 	
 
