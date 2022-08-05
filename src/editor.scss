@@ -3,16 +3,79 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+ @mixin shape($w, $h) {
+	width: $w;
+	@if $h == "" {
+		height: $h;
+	}
+	@else{
+		height: $w;
+	}
+  }
+
+  @mixin pos($type, $top, $right, $bottom, $left){
+	
+  }
+
+ * {margin: 0; padding: 0;}
 
 .wp-block-create-block-jotform-form-builder {
-	border: 1px dotted #f00;
-	background-color: darkviolet;
+	border: 1px solid rgb(0, 0, 0);
+	background-color: white; //darkviolet
+	color: black;
 }
 
 .jotform-icon{
-	width: 2em;
-	height: 2em;
-	margin-right: 1em;
+	@include shape(2em, "");
 	margin-top: 0.5em;
-	margin-left: 0.5em;
+}
+ .components-modal__content::before {
+	content: none;
+ }
+
+ .components-modal__frame{
+	min-width: 630px;
+	min-height: 500px;
+	height: 60vh;
+	border-radius: 4px;
+ }
+
+ .components-modal__content{
+	position: relative;
+	margin: 0; 
+	//padding: 10px 5px;
+	.components-modal__header{
+		display: none;
+	}
+	
+	#embed-form-iframe{
+		//margin-top: -10px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+    	height: 100%;
+		//@include shape(100%, null);
+	}
+ }
+
+ #pickerBtn{
+	background-color:#006BA1;
+	color: white;
+ }
+
+ #formBlock{
+	min-width: 630px; //630px;
+	//min-height: 300px; //500px;
+	height: 30vh;
+
+	#btnAndModal{
+		@include shape(100%, null);
+		
+	 }
+	
+ }
+
+ #JotFormIFrame{
+	@include shape(100%, null);
 }

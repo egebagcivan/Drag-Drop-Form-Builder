@@ -15,7 +15,7 @@ function jotform_admin_menu() {
 		get_menu_icon(), 
 		50);
 
-		if(get_option('qwwwww_token') != null) {
+		if(get_option('x_token') != null) {
 			add_submenu_page(
 				'jotform-admin-menu', 
 				'Inbox', 
@@ -23,14 +23,6 @@ function jotform_admin_menu() {
 				'manage_options', 
 				'jotform-admin-menu-inbox', 
 				'jotform_admin_menu_inbox');
-		
-			add_submenu_page(
-				'jotform-admin-menu', 
-				'Account Settings', 
-				'Account Settings', 
-				'manage_options', 
-				'jotform-admin-menu-accountsettings', 
-				'jotform_admin_menu_accountSettings');
 		}
   
 }
@@ -38,17 +30,17 @@ function jotform_admin_menu() {
 function jotform_admin_menu_main() {
 	if($_GET['accessToken'] != null) {
 		$accessToken = $_GET['accessToken'];
-		add_option('qwwwww_token', $accessToken);
-		$token = get_option('qwwwww_token');
+		add_option('x_token', $accessToken);
+		$token = get_option('eeeeeee_token');
 	} else if($token != $accessToken) {
 		$accessToken = $_GET['accessToken'];
-		update_option('qwwwww_token', $accessToken);
+		update_option('x_token', $accessToken);
 	} 
 
-	if(get_option('qwwwww_token') != null) {
+	if(get_option('x_token') != null) {
 		$url = urlencode('https://www.jotform.com/platform/?product=myforms&client=wordpress');
 		echo 
-	'<iframe src="https://api.jotform.com/login?apikey='.get_option('qwwwww_token').'&return='.$url.'" frameborder="0" scrolling="yes" seamless="seamless" style="margin-left: 0px; padding-left: 0px; display:block; width:100%; height:100vh;">
+	'<iframe src="https://api.jotform.com/login?apikey='.get_option('x_token').'&return='.$url.'" frameborder="0" scrolling="yes" seamless="seamless" style="margin-left: 0px; padding-left: 0px; display:block; width:100%; height:100vh;">
 		</iframe>';
 	}
 	else {

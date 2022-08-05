@@ -5,12 +5,53 @@
 	"version": "0.1.0",
 	"title": "Jotform Form Builder",
 	"category": "widgets",
-	"icon": "smiley",
-	"description": "Example static block scaffolded with Create Block tool.",
+	"description": "Jotform Drag & Drop Form Builder",
 	"attributes": {
 		"message": {
-			"type": "number",
-			"default": "Hello Mehmet"
+			"type": "string",
+			"default": "Select a form to embed in your site."
+		},
+		"isModalOpen":{
+			"type":"boolean",
+			"default" : false
+		},
+		"isVisible":{
+			"type":"boolean",
+			"default" : true
+		},
+
+		"formData":{
+			"type":"object",
+			"default":{
+				"id":null,
+				"title":null
+			}
+		},
+		"alignment":{
+			"type":"string",
+			"default":"none"
+		},
+		"maxWidth":{
+			"type":"string",
+			"default":"650px"
+		},
+		"heightStyle":{
+			"type":"number",
+			"default":160
+		},
+		"heightMetric":{
+			"type":"string",
+			"default":"px"
+		},
+
+
+		"alignmentStyle":{
+			"type":"object",
+			"default": {
+				"maxWidth": "650px",
+				"minWidth": 300,
+				"width":650
+			}
 		},
 		"editable": {
 			"type":"boolean",
@@ -20,12 +61,6 @@
 			"type":"object",
 			"default":{
 				"fontWeight": "lighter"
-			}
-		},
-		"modalStyles":{
-			"type":"object",
-			"default":{
-				"backgroundColor":"yellow"
 			}
 		}
 	},

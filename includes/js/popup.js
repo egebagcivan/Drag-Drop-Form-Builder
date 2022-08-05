@@ -17,8 +17,6 @@ window.addEventListener(
     console.log(event.data);
     if (event.data.type == "allowAuth") {
       console.log(window.location);
-      other.close();
-      window.close();
       window.location =
         window.location + "&accessToken=" + event.data.data.accessToken;
     }

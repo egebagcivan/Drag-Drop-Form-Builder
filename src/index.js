@@ -21,6 +21,8 @@ import Edit from './edit';
 import save from './save';
 import metadata from './block.json';
 
+import icons from './icon';
+
 /**
  * Every block starts by registering a new block type definition.
  *
@@ -35,4 +37,10 @@ registerBlockType( metadata.name, {
 	 * @see ./save.js
 	 */
 	save,
+	icon: icons.jotform,
 } );
+
+registerPlugin("jotform-form-builder", {
+    icon: icons.jotform, // The Plugin icon
+    render: Sidebar
+});
